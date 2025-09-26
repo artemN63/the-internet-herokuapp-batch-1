@@ -21,3 +21,13 @@ test('Form Authentication Validation happy path', async ({page}) => {
     await securePage.logOut()
     await formAuthenticationPage.validateLogOutMessage()
 })
+
+test('Log In attempt with invalid Username', async ({page}) => {
+    await formAuthenticationPage.logIn('sad', 'SuperSecretPassword!')
+    await formAuthenticationPage.validateUsernameErrorMessage()
+})
+
+test('Log In attempt with invalid Password', async ({page}) => {
+    await formAuthenticationPage.logIn('tomsmith', '123!')
+    await formAuthenticationPage.validatePasswordErrorMessage()
+})
