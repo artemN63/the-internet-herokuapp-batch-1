@@ -17,7 +17,7 @@ test.beforeEach(async ({ page }) => {
 
 test('Form Authentication Validation happy path', async ({page}) => {
     await formAuthenticationPage.logIn('tomsmith', 'SuperSecretPassword!')
-    await formAuthenticationPage.validateLogInMessage()
+    await securePage.validateLogInMessage()
     await securePage.logOut()
     await formAuthenticationPage.validateLogOutMessage()
 })

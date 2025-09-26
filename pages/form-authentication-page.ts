@@ -4,14 +4,12 @@ export class FormAuthenticationPage {
     usernameInput: Locator
     passwordInput: Locator
     logInButton: Locator
-    logInMessage: Locator
     logOutMessage: Locator
 
     constructor(page: Page) {
         this.usernameInput = page.getByRole('textbox', { name: 'Username' })
         this.passwordInput = page.getByRole('textbox', { name: 'Password' })
         this.logInButton = page.getByRole('button', { name: ' Login' })
-        this.logInMessage = page.getByText('You logged into a secure area')
         this.logOutMessage = page.getByText('You logged out of the secure')
     }
 
@@ -19,10 +17,6 @@ export class FormAuthenticationPage {
         await this.usernameInput.fill(username)
         await this.passwordInput.fill(password)
         await this.logInButton.click()
-    }
-
-    async validateLogInMessage(): Promise<void> {
-        await expect(this.logInMessage).toContainText("You logged into a secure area!")
     }
 
     async validateLogOutMessage(): Promise<void> {
