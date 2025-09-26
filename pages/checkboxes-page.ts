@@ -9,12 +9,20 @@ export class CheckBoxesPage {
         this.checkBox2 = page.getByRole('checkbox').nth(1)
     }
 
-    async validateSecondCheckBox(): Promise<void> {
+    clickOnCheckBox(checkBoxNumber: number): void {
+        if(checkBoxNumber === 1) {
+            this.checkBox1.click()
+        } else if (checkBoxNumber === 2) {
+            this.checkBox2.click()
+        }
+    }
+
+    async validateCheckBoxesFirtstIsNotCheckedAndSecondIsChecked(): Promise<void> {
         await expect(this.checkBox1).not.toBeChecked()
         await expect(this.checkBox2).toBeChecked() 
     }
 
-    async validateBothCheckBoxes(): Promise<void> {
+    async validateBothCheckBoxesAreChecked(): Promise<void> {
         await expect(this.checkBox1).toBeChecked()
         await expect(this.checkBox2).toBeChecked() 
     }
